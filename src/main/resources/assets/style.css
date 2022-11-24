@@ -1,0 +1,108 @@
+
+#header {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 28pt;
+      -fx-text-fill:rgba(0, 0, 0, 0.8956);
+
+}
+ .button {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 14pt;
+    -fx-background-color :  #F3F5FA;
+    -fx-text-alignment: left;
+    -fx-background-radius: 4px;
+     -fx-text-fill:rgba(0, 0, 0, 0.6063);
+}
+
+
+ .button:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.0373);;
+}
+
+
+.button:pressed {
+    -fx-background-color:rgba(0, 0, 0, 0.0373);;
+    -fx-text-fill: rgba(0, 0, 0, 0.8956);
+}
+
+
+ .button:focused {
+     -fx-background-color: rgba(0, 0, 0, 0.0373);;
+     -fx-text-fill: rgba(0, 0, 0, 0.8956);
+
+}
+
+
+/* buttton */
+
+#btnAjouter {
+    -fx-background-color :  #005FB8;
+    -fx-text-fill :  white;
+}
+
+#btnAjouter:hover {
+    -fx-background-color :  rgba(0, 95, 184, 0.9);
+}
+
+#btnAjouter:pressed {
+    -fx-background-color :  rgba(0, 95, 184, 0.8);
+      -fx-border-color :rgba(255, 255, 255, 0.08);
+}
+
+#btnAjouter:focused {
+     -fx-border-color :white;
+     -fx-border-width : 2px;
+     -fx-border-radius: 4px;
+
+
+
+}
+
+#searchBar {
+           -fx-background-color :  white;
+           -fx-text-fill :  black;
+           -fx-border-color : rgba(255, 255, 255, 0.7);
+           -fx-border-radius: 4px;
+
+  }
+
+#btnExporter {
+-fx-background-color :  white;
+-fx-text-fill :  black;
+-fx-border-color : rgba(0, 0, 0, 0.3);
+-fx-border-radius: 4px;
+
+}
+
+#btnExporter:hover {
+-fx-background-color :  rgba(249, 249, 249, 0.5);
+}
+
+#btnExporter:pressed {
+-fx-background-color :  gba(249, 249, 249, 0.3);
+-fx-border-color : rgba(0, 0, 0, 0.0578);
+ -fx-border-width : 2px;
+-fx-border-radius: 4px;
+}
+#btnExporter:focused {
+-fx-border-color :black;
+     -fx-border-width : 2px;
+     -fx-border-radius: 4px;
+}
+
+/* Table */
+.table-view {
+	-fx-border-color: transparent;
+	-fx-background-color: transparent; /* OR  -fx-background-insets: 0.0; */
+	 -fx-font-size: 14pt;
+	 -fx-text-fill :  black;
+}
+
+.table-view .column-header {
+    -fx-font-family: "Segoe UI Semilight";
+    -fx-background-color :  white;
+    -fx-text-fill :  black;
+    -fx-border-color : rgba(0, 0, 0, 0.3);
+    -fx-border-white : 1px;
+	 -fx-font-size: 14pt;
+}

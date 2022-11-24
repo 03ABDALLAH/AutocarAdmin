@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.GuichetsController">
+    <children>
+        <Pane id="AgencesView" style="-fx-background-color: #F3F5FA;" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
+            <children>
+                <VBox>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="0.0">
+                            <children>
+                                <Text id="header" strokeType="OUTSIDE" strokeWidth="0.0" text="Guichets">
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="36.0" />
+                                    </font>
+                                </Text>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="24.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="817.0">
+                            <children>
+                                <TextField id="searchBar" prefHeight="38.0" prefWidth="300.0" promptText="Search" style="-fx-background-color: white;">
+                                    <HBox.margin>
+                                        <Insets right="224.0" />
+                                    </HBox.margin>
+                                    <font>
+                                        <Font name="Segoe UI Semilight" size="14.0" />
+                                    </font>
+                                </TextField>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" translateX="-260.0">
+                                    <image>
+                                        <Image url="@../assets/Images/icons8-search-48.png" />
+                                    </image>
+                                </ImageView>
+                                <Button id="btnAjouter" fx:id="btnAjouter" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="130.0" text="Ajouter" textFill="WHITE">
+                                    <HBox.margin>
+                                        <Insets right="9.0" />
+                                    </HBox.margin>
+                                    <font>
+                                        <Font name="Segoe UI Light" size="14.0" />
+                                    </font>
+                                    <graphic>
+                                        <ImageView fitHeight="24.0" fitWidth="24.0">
+                                            <image>
+                                                <Image url="@../assets/Images/addIcon.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                                <Button id="btnExporter" fx:id="btnExporter" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="130.0" text="Exporter">
+                                    <graphic>
+                                        <ImageView fitHeight="24.0" fitWidth="24.0">
+                                            <image>
+                                                <Image url="@../assets/Images/icons8-xls-export-40.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="24.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <HBox>
+                            <children>
+                                <TableView fx:id="guichetTable" prefHeight="400.0" prefWidth="817.0">
+                                    <columns>
+                                        <TableColumn fx:id="colId" text="Id" />
+                                        <TableColumn fx:id="colAddress" prefWidth="160.0" text="Adresse" />
+                                        <TableColumn fx:id="colStatus" prefWidth="110.0" text="Status" />
+                              <TableColumn fx:id="colNbTickSold" prefWidth="150.0" text="Tickets Vendu" />
+                              <TableColumn fx:id="colResponsable" prefWidth="158.0" text="Responsable" />
+                              <TableColumn fx:id="colRevenue" text="Revenu" />
+                              <TableColumn fx:id="colAction" prefWidth="75.0" text="Action" />
+                                    </columns>
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TableView>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children></Pane>
+    </children>
+</AnchorPane>
