@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="DailogBoxAgenceId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="600.0" style="-fx-background-color: #F3F5FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <Pane prefWidth="552.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+         </BorderPane.margin>
+         <children>
+            <HBox prefWidth="552.0">
+               <children>
+                  <VBox prefHeight="370.0" prefWidth="267.0">
+                     <HBox.margin>
+                        <Insets right="12.0" />
+                     </HBox.margin>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Ticket">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="12.0" />
+                           </VBox.margin>
+                        </Text>
+                        <Pane prefHeight="322.0" prefWidth="267.0">
+                           <children>
+                              <Text layoutX="-1.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emplacement de départ">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="18.0" />
+                                 </font>
+                              </Text>
+                              <TextField id="searchBar" layoutY="35.0" prefHeight="38.0" prefWidth="270.0" promptText="Entre le départ de voyage" style="-fx-background-color: white;">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Text layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de départ">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="18.0" />
+                                 </font>
+                              </Text>
+                              <TextField id="searchBar" layoutY="120.0" prefHeight="38.0" prefWidth="270.0" promptText="Entre La date de départ" style="-fx-background-color: white;">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="239.0" layoutY="43.0">
+                                 <image>
+                                    <Image url="@../assets/Images/icons8-map-pinpoint-48.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="238.0" layoutY="128.0">
+                                 <image>
+                                    <Image url="@../assets/Images/icons8-get-on-bus-48.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° de Place" translateY="92.0">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="18.0" />
+                                 </font>
+                              </Text>
+                              <TextField id="searchBar" layoutY="202.0" prefHeight="38.0" prefWidth="270.0" promptText="Entre le N° de la place" style="-fx-background-color: white;">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="238.0" layoutY="209.0" nodeOrientation="RIGHT_TO_LEFT">
+                                 <image>
+                                    <Image url="@../assets/Images/icons8-baby-car-seat-48.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agence :">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="18.0" />
+                                 </font>
+                              </Text>
+                              <ComboBox layoutY="283.0" prefHeight="39.0" prefWidth="265.0" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="276.0">
+                     <children>
+                        <Pane prefHeight="280.0" prefWidth="270.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Emplacement de destination" translateY="64.0">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="18.0" />
+                                 </font>
+                              </Text>
+                              <TextField id="searchBar" layoutY="80.0" prefHeight="38.0" prefWidth="270.0" promptText="Entre la destination de voyage" style="-fx-background-color: white;">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date d'arrivée" translateY="150.0">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="18.0" />
+                                 </font>
+                              </Text>
+                              <TextField id="searchBar" prefHeight="38.0" prefWidth="270.0" promptText="Entre La date d'arrivée" style="-fx-background-color: white;" translateY="164.0">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="239.0" layoutY="86.0" nodeOrientation="RIGHT_TO_LEFT">
+                                 <image>
+                                    <Image url="@../assets/Images/icons8-map-pinpoint-48.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="238.0" layoutY="173.0">
+                                 <image>
+                                    <Image url="@../assets/Images/icons8-get-off-bus-48.png" />
+                                 </image>
+                              </ImageView>
+                              <Pane layoutX="225.0" layoutY="-1.0" prefHeight="43.0" prefWidth="45.0" />
+                              <Text layoutX="-1.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le Prix">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="18.0" />
+                                 </font>
+                              </Text>
+                              <TextField id="searchBar" layoutY="246.0" prefHeight="38.0" prefWidth="270.0" promptText="Entre le prix du ticket" style="-fx-background-color: white;">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="239.0" layoutY="252.0" nodeOrientation="RIGHT_TO_LEFT">
+                                 <image>
+                                    <Image url="@../assets/Images/icons8-cash-48.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Button id="btnExporter" layoutX="432.0" layoutY="329.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="Annuler">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="21.0">
+                     <image>
+                        <Image url="@../assets/Images/icons8-cancel-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="btnAjouter" layoutX="310.0" layoutY="329.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="Ajouter">
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="21.0">
+                     <image>
+                        <Image url="@../assets/Images/addIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
