@@ -1,18 +1,26 @@
 package mvc.adminAutocar.Controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import mvc.adminAutocar.Model.Repositories.TicketRepository;
 import mvc.adminAutocar.Model.Ticket;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -61,6 +69,17 @@ public class TicketsController implements Initializable {
         loadData();
     }
 
+
+    @FXML
+    void handleAddTickets(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/AddTickets.fxml"));
+        Parent root1 = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }
+
+
     // function allows to fetch the data from data base and show it in the table
     private void loadData(){
         ticketTable.setItems(ticketRepository.getTickets());
@@ -94,6 +113,16 @@ public class TicketsController implements Initializable {
                     Button deleteIcon = new Button();
                     Button editIcon = new Button();
 
+                    Image editIconImg = new Image("C:/Users/hakee/IdeaProjects/AutocarAdmin/src/main/resources/assets/Images/icons8-edit-file-48.png", 25, 25,true , true);
+                    Image deleteIconImg = new Image("C:/Users/hakee/IdeaProjects/AutocarAdmin/src/main/resources/assets/Images/icons8-remove-48.png", 25, 25 ,true , true);
+
+                    ImageView viewEdit = new ImageView(editIconImg);
+                    ImageView viewDelete = new ImageView(deleteIconImg);
+
+                    deleteIcon.setGraphic(viewDelete);
+                    editIcon.setGraphic(viewEdit);
+
+
                     deleteIcon.setOnMouseClicked((event) -> {
                         var ticket= this.getTableRow();
                         if (ticket!=null){
@@ -106,9 +135,11 @@ public class TicketsController implements Initializable {
                     });
 
                     HBox managebtn = new HBox(editIcon, deleteIcon);
-                    managebtn.setStyle("-fx-alignment:center");
-                    HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
-                    HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
+                    managebtn.setStyle("-fx-alignment:center;-fx-background-color:white;");
+
+
+                    //HBox.setMargin(deleteIcon, new Insets(0, 0, 0, 0));
+                    //HBox.setMargin(editIcon, new Insets(-10, -10, -10, -10));
 
                     setGraphic(managebtn);
                     setText(null);

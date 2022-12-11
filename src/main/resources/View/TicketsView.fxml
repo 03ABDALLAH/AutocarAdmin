@@ -14,9 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.TicketsController">
+<AnchorPane prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.TicketsController">
     <children>
-        <Pane id="AgencesView" style="-fx-background-color: #F3F5FA;" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
+        <Pane id="AgencesView" style="-fx-background-color: #F3F5FA;" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="24.0">
             <children>
                 <VBox>
                     <children>
@@ -50,7 +50,7 @@
                                         <Image url="@../assets/Images/icons8-search-48.png" />
                                     </image>
                                 </ImageView>
-                                <Button id="btnAjouter" fx:id="btnAjouter" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="130.0" text="Ajouter" textFill="WHITE">
+                                <Button id="btnAjouter" fx:id="btnAjouter" alignment="CENTER" mnemonicParsing="false" onAction="#handleAddTickets" prefHeight="34.0" prefWidth="130.0" text="Ajouter" textFill="WHITE">
                                     <HBox.margin>
                                         <Insets right="9.0" />
                                     </HBox.margin>
@@ -73,25 +73,28 @@
                                             </image>
                                         </ImageView>
                                     </graphic>
+                           <HBox.margin>
+                              <Insets right="7.0" />
+                           </HBox.margin>
                                 </Button>
                             </children>
                             <VBox.margin>
                                 <Insets bottom="24.0" />
                             </VBox.margin>
                         </HBox>
-                        <HBox>
+                        <HBox alignment="CENTER_LEFT">
                             <children>
-                                <TableView fx:id="ticketTable" prefWidth="817.0">
+                                <TableView fx:id="ticketTable" editable="true" nodeOrientation="LEFT_TO_RIGHT" prefWidth="830.0" style="-fx-text-alignment: left;">
                                     <columns>
-                                        <TableColumn fx:id="colId" prefWidth="65.0" text="Id" />
-                                        <TableColumn fx:id="colDestination" prefWidth="110.0" text="Destination" />
-                                        <TableColumn fx:id="colDepar" prefWidth="110.0" text="Départ" />
-                                        <TableColumn fx:id="colDeparDate" prefWidth="115.0" text="Date départ" />
-                                        <TableColumn fx:id="colArrivalDate" prefWidth="115.0" text="Date Arrivée" />
-                                        <TableColumn fx:id="colNbPlace" text="N° Place" />
-                                        <TableColumn fx:id="colPrice" prefWidth="68.0" text="Price" />
-                              <TableColumn fx:id="colIsPurshised" prefWidth="75.0" text="Status" />
-                              <TableColumn fx:id="colAction" prefWidth="74.0" text="Action" />
+                                        <TableColumn fx:id="colId" minWidth="40.0" prefWidth="40.0" resizable="false" style="-fx-text-alignment: left;" text="Id" />
+                                        <TableColumn fx:id="colDestination" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Destination" />
+                                        <TableColumn fx:id="colDepar" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Départ" />
+                                        <TableColumn fx:id="colDeparDate" prefWidth="115.0" resizable="false" text="Date départ" />
+                                        <TableColumn fx:id="colArrivalDate" prefWidth="115.0" resizable="false" text="Date Arrivée" />
+                                        <TableColumn fx:id="colNbPlace" prefWidth="100.0" resizable="false" text="N° Place" />
+                                        <TableColumn fx:id="colPrice" resizable="false" text="Price" />
+                              <TableColumn fx:id="colIsPurshised" resizable="false" text="Status" />
+                              <TableColumn fx:id="colAction" prefWidth="100.0" resizable="false" text="Action" />
                                     </columns>
                                     <HBox.margin>
                                         <Insets />

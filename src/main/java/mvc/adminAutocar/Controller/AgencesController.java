@@ -16,6 +16,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -58,7 +60,7 @@ public class AgencesController implements Initializable {
 
 
     @FXML
-    void handleAdd(ActionEvent event) throws IOException {
+    void handleAddAgency(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/AddAgence.fxml"));
         Parent root1 = fxmlLoader.load();
         Stage stage = new Stage();
@@ -100,8 +102,18 @@ public class AgencesController implements Initializable {
                     setGraphic(null);
                     setText(null);
                 } else {
+
                     Button deleteIcon = new Button();
                     Button editIcon = new Button();
+
+                    Image editIconImg = new Image("C:/Users/hakee/IdeaProjects/AutocarAdmin/src/main/resources/assets/Images/icons8-edit-file-48.png", 25, 25 ,false , false);
+                    Image deleteIconImg = new Image("C:/Users/hakee/IdeaProjects/AutocarAdmin/src/main/resources/assets/Images/icons8-remove-48.png", 25, 25 ,false , false);
+
+                    ImageView viewEdit = new ImageView(editIconImg);
+                    ImageView viewDelete = new ImageView(deleteIconImg);
+
+                    deleteIcon.setGraphic(viewDelete);
+                    editIcon.setGraphic(viewEdit);
 
                     deleteIcon.setOnMouseClicked((event) -> {
                         var agency= this.getTableRow();
@@ -115,9 +127,9 @@ public class AgencesController implements Initializable {
                     });
 
                     HBox managebtn = new HBox(editIcon, deleteIcon);
-                    managebtn.setStyle("-fx-alignment:center");
-                    HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
-                    HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
+                        managebtn.setStyle("-fx-alignment:center");
+                 // HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
+                   //HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
 
                     setGraphic(managebtn);
                     setText(null);
