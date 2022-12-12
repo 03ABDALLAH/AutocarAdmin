@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -84,27 +85,18 @@
                                     <Font name="Segoe UI Semilight" size="14.0" />
                                  </font>
                               </TextField>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de tickets" translateY="150.0">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Etat" translateY="150.0">
                                  <font>
                                     <Font name="Segoe UI Semilight" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField id="searchBar" prefHeight="38.0" prefWidth="270.0" promptText="Entre le nombre de tickets" style="-fx-background-color: white;" translateY="164.0">
-                                 <font>
-                                    <Font name="Segoe UI Semilight" size="14.0" />
-                                 </font>
-                              </TextField>
                               <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="239.0" layoutY="86.0" nodeOrientation="RIGHT_TO_LEFT">
                                  <image>
                                     <Image url="@../assets/Images/icons8-phone-48.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="238.0" layoutY="173.0">
-                                 <image>
-                                    <Image url="@../assets/Images/icons8-two-tickets-48.png" />
-                                 </image>
-                              </ImageView>
                               <Pane layoutX="225.0" layoutY="-1.0" prefHeight="43.0" prefWidth="45.0" />
+                              <ComboBox layoutY="164.0" prefHeight="38.0" prefWidth="270.0" />
                            </children>
                         </Pane>
                      </children>

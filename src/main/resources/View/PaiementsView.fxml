@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.PaiementsController">
+<AnchorPane prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.PaiementsController">
     <children>
         <Pane style="-fx-background-color: #F3F5FA;" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
             <children>
@@ -39,7 +39,7 @@
                             <children>
                                 <TextField id="searchBar" prefHeight="38.0" prefWidth="300.0" promptText="Search" style="-fx-background-color: white;">
                                     <HBox.margin>
-                                        <Insets right="224.0" />
+                                        <Insets right="363.0" />
                                     </HBox.margin>
                                     <font>
                                         <Font name="Segoe UI Semilight" size="14.0" />
@@ -50,21 +50,6 @@
                                         <Image url="@../assets/Images/icons8-search-48.png" />
                                     </image>
                                 </ImageView>
-                                <Button id="btnAjouter" fx:id="btnAjouter" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="130.0" text="Ajouter" textFill="WHITE">
-                                    <HBox.margin>
-                                        <Insets right="9.0" />
-                                    </HBox.margin>
-                                    <font>
-                                        <Font name="Segoe UI Light" size="14.0" />
-                                    </font>
-                                    <graphic>
-                                        <ImageView fitHeight="24.0" fitWidth="24.0">
-                                            <image>
-                                                <Image url="@../assets/Images/addIcon.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
                                 <Button id="btnExporter" fx:id="btnExporter" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="130.0" text="Exporter">
                                     <graphic>
                                         <ImageView fitHeight="24.0" fitWidth="24.0">
