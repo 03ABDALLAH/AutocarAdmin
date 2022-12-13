@@ -67,7 +67,7 @@ public class AddAgenceController implements Initializable{
         if (name.isEmpty() || adress.isEmpty() || etat.isEmpty() || tel.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setContentText("Please Fill All DATA");
+            alert.setContentText("Veuillez remplir tous les champs!");
             alert.showAndWait();
 
         } else {

@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.GuichetsController">
+<AnchorPane prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.GuichetsController">
     <children>
         <Pane id="AgencesView" style="-fx-background-color: #F3F5FA;" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
             <children>
@@ -86,9 +86,9 @@
                                         <TableColumn fx:id="colId" text="Id" />
                                         <TableColumn fx:id="colAddress" prefWidth="160.0" text="Adresse" />
                                         <TableColumn fx:id="colStatus" prefWidth="110.0" text="Status" />
-                              <TableColumn fx:id="colNbTickSold" prefWidth="150.0" text="Tickets Vendu" />
+                              <TableColumn fx:id="colNbTickSold" prefWidth="125.0" resizable="false" text="Tickets Vendu" />
                               <TableColumn fx:id="colResponsable" prefWidth="158.0" text="Responsable" />
-                              <TableColumn fx:id="colRevenue" text="Revenu" />
+                              <TableColumn fx:id="colRevenue" prefWidth="100.0" text="Revenu" />
                               <TableColumn fx:id="colAction" prefWidth="75.0" text="Action" />
                                     </columns>
                                     <HBox.margin>
