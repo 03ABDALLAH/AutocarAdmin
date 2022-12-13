@@ -6,6 +6,24 @@ public class Guichet {
     private int idGuichet;
     private String addresse;
     private String status;
+
+    public String getResponsable() {
+        return responsable;
+    }
+
+    public Guichet(int idGuichet, String addresse, String status, String responsable) {
+        this.idGuichet = idGuichet;
+        this.addresse = addresse;
+        this.status = status;
+        this.responsable = responsable;
+        this.tickets = tickets;
+    }
+
+    public void setResponsable(String responsable) {
+        this.responsable = responsable;
+    }
+
+    private String responsable;
     private List<Ticket> tickets;
 
     public Guichet(int idGuichet, String addresse, String status) {

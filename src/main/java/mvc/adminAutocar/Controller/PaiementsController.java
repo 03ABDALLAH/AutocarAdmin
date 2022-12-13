@@ -3,10 +3,7 @@ package mvc.adminAutocar.Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
@@ -16,6 +13,7 @@ import mvc.adminAutocar.Model.Repositories.GuichetRepository;
 import mvc.adminAutocar.Model.Repositories.PaymentRepository;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class PaiementsController implements Initializable {
@@ -85,10 +83,15 @@ public class PaiementsController implements Initializable {
                     Button editIcon = new Button();
 
                     deleteIcon.setOnMouseClicked((event) -> {
-                        var payment= this.getTableRow();
-                        if (payment!=null){
-                            paymentRepository.deletePayment(payment.getItem().getIdPaiment());
-                            paymentTable.setItems(paymentRepository.getPayments());
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you shure you want to delete?");
+                        alert.getDialogPane().setHeaderText(null);
+                        Optional<ButtonType> action = alert.showAndWait();
+                        if(action.get() == ButtonType.OK) {
+                            var payment = this.getTableRow();
+                            if (payment != null) {
+                                paymentRepository.deletePayment(payment.getItem().getIdPaiment());
+                                paymentTable.setItems(paymentRepository.getPayments());
+                            }
                         }
                     });
 

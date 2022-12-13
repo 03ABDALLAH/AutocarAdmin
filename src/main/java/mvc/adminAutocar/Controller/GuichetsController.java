@@ -7,20 +7,17 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import mvc.adminAutocar.Model.Agency;
 import mvc.adminAutocar.Model.Guichet;
 import mvc.adminAutocar.Model.Repositories.GuichetRepository;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class GuichetsController implements Initializable {
@@ -57,6 +54,7 @@ public class GuichetsController implements Initializable {
     private TableView<Guichet> guichetTable;
 
     GuichetRepository guichetRepository = new GuichetRepository();
+    AddGuichetController addGuichetController = new AddGuichetController();
 
 
     @Override
@@ -66,11 +64,15 @@ public class GuichetsController implements Initializable {
 
 
     @FXML
-    void handleAddGuichet(ActionEvent event) throws IOException {
+    void handleAddGuichet() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/AddGuichet.fxml"));
-        Parent root1 = fxmlLoader.load();
+        Parent root2 = fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root1));
+        stage.setScene(new Scene(root2));
+        stage.setOnCloseRequest(v ->{
+            guichetTable.setItems(guichetRepository.getGuichets());
+        });
+        addGuichetController = fxmlLoader.getController();
         stage.show();
     }
 
@@ -81,6 +83,7 @@ public class GuichetsController implements Initializable {
         colId.setCellValueFactory(new PropertyValueFactory<>("IdGuichet"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("Addresse"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
+        colResponsable.setCellValueFactory(new PropertyValueFactory<>("Responsable"));
 
 
         // set the two button to these column
@@ -105,14 +108,28 @@ public class GuichetsController implements Initializable {
                     Button editIcon = new Button();
 
                     deleteIcon.setOnMouseClicked((event) -> {
-                        var guichet= this.getTableRow();
-                        if (guichet!=null){
-                            guichetRepository.deleteGuichet(guichet.getItem().getIdGuichet());
-                            guichetTable.setItems(guichetRepository.getGuichets());
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you shure you want to delete?");
+                        alert.getDialogPane().setHeaderText(null);
+                        Optional<ButtonType> action = alert.showAndWait();
+                        if(action.get() == ButtonType.OK) {
+                            var guichet = this.getTableRow();
+                            if (guichet != null) {
+                                guichetRepository.deleteGuichet(guichet.getItem().getIdGuichet());
+                                guichetTable.setItems(guichetRepository.getGuichets());
+                            }
                         }
                     });
 
                     editIcon.setOnMouseClicked((event) -> {
+                        var guichet= this.getTableRow().getItem();
+                        try {
+                            handleAddGuichet();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        addGuichetController.setUpdate(true);
+                        addGuichetController.setTextField(guichet);
                     });
 
                     HBox managebtn = new HBox(editIcon, deleteIcon);

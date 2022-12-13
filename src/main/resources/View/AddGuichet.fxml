@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="DailogBoxAgenceId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="254.0" prefWidth="600.0" style="-fx-background-color: #F3F5FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="DailogBoxAgenceId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="254.0" prefWidth="600.0" style="-fx-background-color: #F3F5FA;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.AddGuichetController">
    <center>
       <Pane prefWidth="552.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -42,7 +42,7 @@
                                     <Font name="Segoe UI Semilight" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField id="searchBar" layoutY="35.0" prefHeight="38.0" prefWidth="270.0" promptText="Entre l'adresse du guichet" style="-fx-background-color: white;">
+                              <TextField id="searchBar" fx:id="fieldAdress" layoutY="35.0" prefHeight="38.0" prefWidth="270.0" promptText="Entre l'adresse du guichet" style="-fx-background-color: white;">
                                  <font>
                                     <Font name="Segoe UI Semilight" size="14.0" />
                                  </font>
@@ -52,7 +52,7 @@
                                     <Font name="Segoe UI Semilight" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField id="searchBar" layoutY="120.0" prefHeight="38.0" prefWidth="270.0" promptText="Entre le responsable du guichet" style="-fx-background-color: white;">
+                              <TextField id="searchBar" fx:id="fieldRespo" layoutY="120.0" prefHeight="38.0" prefWidth="270.0" promptText="Entre le responsable du guichet" style="-fx-background-color: white;">
                                  <font>
                                     <Font name="Segoe UI Semilight" size="14.0" />
                                  </font>
@@ -81,14 +81,14 @@
                                  </font>
                               </Text>
                               <Pane layoutX="225.0" layoutY="-1.0" prefHeight="43.0" prefWidth="45.0" />
-                              <ComboBox layoutX="4.0" layoutY="80.0" prefHeight="38.0" prefWidth="270.0" />
+                              <ComboBox fx:id="fieldStatus" layoutX="4.0" layoutY="80.0" prefHeight="38.0" prefWidth="270.0" />
                            </children>
                         </Pane>
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <Button id="btnExporter" layoutX="432.0" layoutY="166.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="120.0" text="Annuler">
+            <Button id="btnExporter" fx:id="btnAnnuler" layoutX="432.0" layoutY="166.0" mnemonicParsing="false" onAction="#clean" prefHeight="33.0" prefWidth="120.0" text="Annuler">
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="21.0">
                      <image>
@@ -97,7 +97,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="btnAjouter" layoutX="310.0" layoutY="166.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="120.0" text="Ajouter">
+            <Button id="btnAjouter" fx:id="btnAjouter" layoutX="310.0" layoutY="166.0" mnemonicParsing="false" onAction="#save" prefHeight="33.0" prefWidth="120.0" text="Ajouter">
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="21.0">
                      <image>

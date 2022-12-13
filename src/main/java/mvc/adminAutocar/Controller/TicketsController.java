@@ -7,10 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,6 +19,7 @@ import mvc.adminAutocar.Model.Ticket;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class TicketsController implements Initializable {
@@ -63,6 +61,7 @@ public class TicketsController implements Initializable {
     private TableView<Ticket> ticketTable;
 
     TicketRepository ticketRepository = new TicketRepository();
+    AddTicketController addTicketController = new AddTicketController();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -71,11 +70,15 @@ public class TicketsController implements Initializable {
 
 
     @FXML
-    void handleAddTickets(ActionEvent event) throws IOException {
+    void handleAddTickets() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/AddTickets.fxml"));
-        Parent root1 = fxmlLoader.load();
+        Parent root2 = fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root1));
+        stage.setScene(new Scene(root2));
+        stage.setOnCloseRequest(v ->{
+            ticketTable.setItems(ticketRepository.getTickets());
+        });
+        addTicketController = fxmlLoader.getController();
         stage.show();
     }
 
@@ -113,8 +116,8 @@ public class TicketsController implements Initializable {
                     Button deleteIcon = new Button();
                     Button editIcon = new Button();
 
-                    Image editIconImg = new Image("C:/Users/hakee/IdeaProjects/AutocarAdmin/src/main/resources/assets/Images/icons8-edit-file-48.png", 25, 25,true , true);
-                    Image deleteIconImg = new Image("C:/Users/hakee/IdeaProjects/AutocarAdmin/src/main/resources/assets/Images/icons8-remove-48.png", 25, 25 ,true , true);
+                    Image editIconImg = new Image("D:/AutocarAdmin/src/main/resources/assets/Images/icons8-edit-file-48.png", 25, 25,true , true);
+                    Image deleteIconImg = new Image("D:/AutocarAdmin/src/main/resources/assets/Images/icons8-remove-48.png", 25, 25 ,true , true);
 
                     ImageView viewEdit = new ImageView(editIconImg);
                     ImageView viewDelete = new ImageView(deleteIconImg);
@@ -124,14 +127,28 @@ public class TicketsController implements Initializable {
 
 
                     deleteIcon.setOnMouseClicked((event) -> {
-                        var ticket= this.getTableRow();
-                        if (ticket!=null){
-                            ticketRepository.deleteTicket(ticket.getItem().getIdTicket());
-                            ticketTable.setItems(ticketRepository.getTickets());
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you shure you want to delete?");
+                        alert.getDialogPane().setHeaderText(null);
+                        Optional<ButtonType> action = alert.showAndWait();
+                        if(action.get() == ButtonType.OK) {
+                            var ticket = this.getTableRow();
+                            if (ticket != null) {
+                                ticketRepository.deleteTicket(ticket.getItem().getIdTicket());
+                                ticketTable.setItems(ticketRepository.getTickets());
+                            }
                         }
                     });
 
                     editIcon.setOnMouseClicked((event) -> {
+                        var ticket= this.getTableRow().getItem();
+                        try {
+                            handleAddTickets();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        addTicketController.setUpdate(true);
+                        addTicketController.setTextField(ticket);
                     });
 
                     HBox managebtn = new HBox(editIcon, deleteIcon);

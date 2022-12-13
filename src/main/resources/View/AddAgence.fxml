@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="DailogBoxAgenceId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="307.0" prefWidth="600.0" style="-fx-background-color: #F3F5FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="DailogBoxAgenceId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="307.0" prefWidth="600.0" style="-fx-background-color: #F3F5FA;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.AddAgenceController">
    <center>
       <Pane prefWidth="552.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -27,7 +27,7 @@
                         <Insets right="12.0" />
                      </HBox.margin>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Agence">
+                        <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Agence">
                            <font>
                               <Font name="Segoe UI Semibold" size="24.0" />
                            </font>
@@ -42,7 +42,7 @@
                                     <Font name="Segoe UI Semilight" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField id="searchBar" layoutY="35.0" prefHeight="38.0" prefWidth="270.0" promptText="Entre le nom de l'agence" style="-fx-background-color: white;">
+                              <TextField id="searchBar" fx:id="fieldName" layoutY="35.0" prefHeight="38.0" prefWidth="270.0" promptText="Entre le nom de l'agence" style="-fx-background-color: white;">
                                  <font>
                                     <Font name="Segoe UI Semilight" size="14.0" />
                                  </font>
@@ -52,7 +52,7 @@
                                     <Font name="Segoe UI Semilight" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField id="searchBar" layoutY="120.0" prefHeight="38.0" prefWidth="270.0" promptText="Entre l'adresse de l'agence" style="-fx-background-color: white;">
+                              <TextField id="searchBar" fx:id="fieldAdress" layoutY="120.0" prefHeight="38.0" prefWidth="270.0" promptText="Entre l'adresse de l'agence" style="-fx-background-color: white;">
                                  <font>
                                     <Font name="Segoe UI Semilight" size="14.0" />
                                  </font>
@@ -80,7 +80,7 @@
                                     <Font name="Segoe UI Semilight" size="18.0" />
                                  </font>
                               </Text>
-                              <TextField id="searchBar" layoutY="80.0" prefHeight="38.0" prefWidth="270.0" promptText="Entre le N° de tél de l'agence" style="-fx-background-color: white;">
+                              <TextField id="searchBar" fx:id="fieldTele" layoutY="80.0" prefHeight="38.0" prefWidth="270.0" promptText="Entre le N° de tél de l'agence" style="-fx-background-color: white;">
                                  <font>
                                     <Font name="Segoe UI Semilight" size="14.0" />
                                  </font>
@@ -96,23 +96,23 @@
                                  </image>
                               </ImageView>
                               <Pane layoutX="225.0" layoutY="-1.0" prefHeight="43.0" prefWidth="45.0" />
-                              <ComboBox layoutY="164.0" prefHeight="38.0" prefWidth="270.0" />
+                              <ComboBox fx:id="fieldEtat" layoutY="164.0" prefHeight="38.0" prefWidth="270.0" />
                            </children>
                         </Pane>
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <Button id="btnExporter" layoutX="432.0" layoutY="228.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="Annuler">
+            <Button id="btnExporter" fx:id="btnAnnuler" layoutX="432.0" layoutY="228.0" mnemonicParsing="false" onAction="#clean" prefHeight="32.0" prefWidth="120.0" text="Annuler">
                <graphic>
-                  <ImageView fitHeight="21.0" fitWidth="21.0">
+                  <ImageView fitHeight="21.0" fitWidth="21.0" onMouseClicked="#clean">
                      <image>
                         <Image url="@../assets/Images/icons8-cancel-48.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="btnAjouter" layoutX="309.0" layoutY="228.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="Ajouter">
+            <Button id="btnAjouter" fx:id="btnAjouter" layoutX="309.0" layoutY="228.0" mnemonicParsing="false" onAction="#save" prefHeight="32.0" prefWidth="120.0" text="Ajouter">
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="21.0">
                      <image>

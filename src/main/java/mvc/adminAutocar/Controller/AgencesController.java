@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ListIterator;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,6 +23,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import mvc.adminAutocar.Model.Agency;
 import mvc.adminAutocar.Model.Repositories.AgencyRepository;
@@ -57,14 +61,19 @@ public class AgencesController implements Initializable {
     private TableColumn<Agency, String> colTicketsVendu;
 
     AgencyRepository agencyRepository = new AgencyRepository();
+    AddAgenceController addAgenceController = new AddAgenceController();
 
 
     @FXML
-    void handleAddAgency(ActionEvent event) throws IOException {
+    void handleAddAgency() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/AddAgence.fxml"));
         Parent root1 = fxmlLoader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root1));
+        stage.setOnCloseRequest(v ->{
+            agencyTable.setItems(agencyRepository.getAgencies());
+        });
+        addAgenceController = fxmlLoader.getController();
         stage.show();
     }
 
@@ -102,12 +111,11 @@ public class AgencesController implements Initializable {
                     setGraphic(null);
                     setText(null);
                 } else {
-
                     Button deleteIcon = new Button();
                     Button editIcon = new Button();
 
-                    Image editIconImg = new Image("C:/Users/hakee/IdeaProjects/AutocarAdmin/src/main/resources/assets/Images/icons8-edit-file-48.png", 25, 25 ,false , false);
-                    Image deleteIconImg = new Image("C:/Users/hakee/IdeaProjects/AutocarAdmin/src/main/resources/assets/Images/icons8-remove-48.png", 25, 25 ,false , false);
+                    Image editIconImg = new Image("D:/AutocarAdmin/src/main/resources/assets/Images/icons8-edit-file-48.png", 25, 25,true , true);
+                    Image deleteIconImg = new Image("D:/AutocarAdmin/src/main/resources/assets/Images/icons8-remove-48.png", 25, 25 ,true , true);
 
                     ImageView viewEdit = new ImageView(editIconImg);
                     ImageView viewDelete = new ImageView(deleteIconImg);
@@ -116,20 +124,32 @@ public class AgencesController implements Initializable {
                     editIcon.setGraphic(viewEdit);
 
                     deleteIcon.setOnMouseClicked((event) -> {
-                        var agency= this.getTableRow();
-                        if (agency!=null){
-                            agencyRepository.deleteAgency(agency.getItem().getIdAgency());
-                            agencyTable.setItems(agencyRepository.getAgencies());
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you shure you want to delete?");
+                        alert.getDialogPane().setHeaderText(null);
+                        Optional<ButtonType> action = alert.showAndWait();
+                        if(action.get() == ButtonType.OK){
+                            var agency= this.getTableRow();
+                            if (agency!=null){
+                                agencyRepository.deleteAgency(agency.getItem().getIdAgency());
+                                agencyTable.setItems(agencyRepository.getAgencies());
+                            }
                         }
                     });
 
                     editIcon.setOnMouseClicked((event) -> {
+                        var agency= this.getTableRow().getItem();
+                        try {
+                            handleAddAgency();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        addAgenceController.setUpdate(true);
+                        addAgenceController.setTextField(agency);
                     });
 
                     HBox managebtn = new HBox(editIcon, deleteIcon);
                         managebtn.setStyle("-fx-alignment:center");
-                 // HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
-                   //HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
 
                     setGraphic(managebtn);
                     setText(null);

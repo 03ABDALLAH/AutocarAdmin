@@ -24,7 +24,8 @@ public class GuichetRepository {
             while (resultSet.next()) {
                 guichet_list.add(new Guichet(resultSet.getInt("IdGuichet"),
                         resultSet.getString("Addresse"),
-                        resultSet.getString("Status")));
+                        resultSet.getString("Status"),
+                        resultSet.getString("Responsable")));
             }
             connection.close();
         } catch (SQLException throwables) {
