@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.TicketsController">
+<AnchorPane prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.TicketsController">
     <children>
         <Pane id="AgencesView" style="-fx-background-color: #F3F5FA;" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="24.0">
             <children>
@@ -91,7 +91,7 @@
                                         <TableColumn fx:id="colDepar" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Départ" />
                                         <TableColumn fx:id="colDeparDate" prefWidth="115.0" resizable="false" text="Date départ" />
                                         <TableColumn fx:id="colArrivalDate" prefWidth="115.0" resizable="false" text="Date Arrivée" />
-                                        <TableColumn fx:id="colNbPlace" prefWidth="100.0" resizable="false" text="N° Place" />
+                                        <TableColumn fx:id="colNbPlace" prefWidth="90.0" resizable="false" text="N° Place" />
                                         <TableColumn fx:id="colPrice" resizable="false" text="Price" />
                               <TableColumn fx:id="colIsPurshised" resizable="false" text="Status" />
                               <TableColumn fx:id="colAction" prefWidth="100.0" resizable="false" text="Action" />

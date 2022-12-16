@@ -77,7 +77,7 @@ public class AddTicketController implements Initializable {
         if (depart.isEmpty() || destination.isEmpty()|| price.isEmpty()|| nbplace.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setContentText("Please Fill All DATA");
+            alert.setContentText("Veuillez remplir tous les champs!");
             alert.showAndWait();
 
         } else {
@@ -102,7 +102,7 @@ public class AddTicketController implements Initializable {
 
         if (update == false) {
 
-            query = "INSERT INTO `ticket`( `Destination`, `Departure`, `DepartureDate`, `ArrivalDate`, `PlaceNumber`, `Prix`, `idAdmin`, `IdAgency`) VALUES (?,?,?,?,?,?,1,47)";
+            query = "INSERT INTO `ticket`( `Destination`, `Departure`, `DepartureDate`, `ArrivalDate`, `PlaceNumber`, `Prix`, `idAdmin`, `IdAgency`) VALUES (?,?,?,?,?,?,1,35)";
 
         }else{
             query = "UPDATE `ticket` SET "
@@ -113,7 +113,7 @@ public class AddTicketController implements Initializable {
                     + "`PlaceNumber`=?,"
                     + "`Prix`=?,"
                     + "`idAdmin`=1,"
-                    + "`IdAgency`=47 WHERE IdTicket = '"+ticketId+"'";
+                    + "`IdAgency`=35 WHERE IdTicket = '"+ticketId+"'";
         }
     }
 

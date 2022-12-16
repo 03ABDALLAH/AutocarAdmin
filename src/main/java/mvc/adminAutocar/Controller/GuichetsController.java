@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -107,8 +109,27 @@ public class GuichetsController implements Initializable {
                     Button deleteIcon = new Button();
                     Button editIcon = new Button();
 
+                    deleteIcon.setStyle("-fx-background-radius: 5em; " +
+                            "-fx-min-width: 30px; " +
+                            "-fx-min-height: 30px; " +
+                            "-fx-max-width: 30px; " +
+                            "-fx-max-height: 30px;");
+                    editIcon.setStyle("-fx-background-radius: 5em; " +
+                            "-fx-min-width: 30px; " +
+                            "-fx-min-height: 30px; " +
+                            "-fx-max-width: 30px; " +
+                            "-fx-max-height: 30px;");
+                    Image editIconImg = new Image("C:/Users/hakee/IdeaProjects/AutocarAdmin/src/main/resources/assets/Images/icons8-edit-file-48.png", 25, 25,true , true);
+                    Image deleteIconImg = new Image("C:/Users/hakee/IdeaProjects/AutocarAdmin/src/main/resources/assets/Images/icons8-remove-48.png", 25, 25 ,true , true);
+
+                    ImageView viewEdit = new ImageView(editIconImg);
+                    ImageView viewDelete = new ImageView(deleteIconImg);
+
+                    deleteIcon.setGraphic(viewDelete);
+                    editIcon.setGraphic(viewEdit);
+
                     deleteIcon.setOnMouseClicked((event) -> {
-                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you shure you want to delete?");
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Êtes-vous sûr de vouloir supprimer?");
                         alert.getDialogPane().setHeaderText(null);
                         Optional<ButtonType> action = alert.showAndWait();
                         if(action.get() == ButtonType.OK) {
@@ -133,7 +154,6 @@ public class GuichetsController implements Initializable {
                     });
 
                     HBox managebtn = new HBox(editIcon, deleteIcon);
-                    managebtn.setStyle("-fx-alignment:center");
                     HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
                     HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
 

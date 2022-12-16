@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="agencesstyle" prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.AgencesController">
+<AnchorPane id="agencesstyle" prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.AgencesController">
     <children>
           <Pane id="AgencesView" style="-fx-background-color: #F3F5FA;" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
          <children>
@@ -83,8 +83,8 @@
                      <children>
                         <TableView fx:id="agencyTable" prefHeight="439.0" prefWidth="817.0">
                           <columns>
-                            <TableColumn fx:id="colId" prefWidth="67.0" text="Id" />
-                              <TableColumn fx:id="colNom" prefWidth="109.0" text="Nom" />
+                            <TableColumn fx:id="colId" prefWidth="60.0" text="Id" />
+                              <TableColumn fx:id="colNom" prefWidth="100.0" text="Nom" />
                             <TableColumn fx:id="colAddress" prefWidth="179.0" text="Adresse" />
                               <TableColumn fx:id="colTicketsDisponible" prefWidth="115.0" text="Disponible" />
                               <TableColumn fx:id="colTicketsVendu" minWidth="0.0" prefWidth="98.0" text="Vendu" />

@@ -62,7 +62,7 @@ public class AddGuichetController implements Initializable {
         if (adress.isEmpty() || respo.isEmpty() || status.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
-            alert.setContentText("Please Fill All DATA");
+            alert.setContentText("Veuillez remplir tous les champs!");
             alert.showAndWait();
 
         } else {

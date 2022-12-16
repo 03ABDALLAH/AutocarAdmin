@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="DailogBoxAgenceId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="307.0" prefWidth="600.0" style="-fx-background-color: #F3F5FA;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.AddAgenceController">
+<BorderPane fx:id="DailogBoxAgenceId" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="307.0" prefWidth="600.0" style="-fx-background-color: #F3F5FA;" stylesheets="@../assets/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.AddAgenceController">
    <center>
       <Pane prefWidth="552.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
