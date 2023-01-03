@@ -1,5 +1,6 @@
 package mvc.adminAutocar.Controller;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,15 +13,23 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import mvc.adminAutocar.Model.Agency;
 import mvc.adminAutocar.Model.Guichet;
 import mvc.adminAutocar.Model.Repositories.GuichetRepository;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ListIterator;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GuichetsController implements Initializable {
 
@@ -58,7 +67,34 @@ public class GuichetsController implements Initializable {
     GuichetRepository guichetRepository = new GuichetRepository();
     AddGuichetController addGuichetController = new AddGuichetController();
 
+    @FXML
+    public void exporterGuichet() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Export Agencies");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
 
+        File outputFile = fileChooser.showSaveDialog(btnExporter.getScene().getWindow());
+        if (outputFile != null) {
+            try {
+                FileWriter fw = new FileWriter(outputFile);
+                BufferedWriter bw = new BufferedWriter(fw);
+                ObservableList<Guichet> list = guichetTable.getItems();
+                ListIterator<Guichet> iter = list.listIterator();
+                while (iter.hasNext()) {
+                    Guichet guichet = iter.next();
+                    bw.write(String.format("%s,%s,%s,%s,\n", guichet.getIdGuichet(), guichet.getAddresse(), guichet.getStatus(), guichet.getResponsable() ));
+                }
+                bw.close();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setTitle("Succès");
+                alert.setContentText("Les données ont été exportées avec succès!");
+                alert.showAndWait();
+            } catch (IOException ex) {
+                Logger.getLogger(AgencesController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadData();

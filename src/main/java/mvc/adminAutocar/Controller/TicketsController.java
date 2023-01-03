@@ -1,5 +1,6 @@
 package mvc.adminAutocar.Controller;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,15 +13,23 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import mvc.adminAutocar.Model.Guichet;
 import mvc.adminAutocar.Model.Repositories.TicketRepository;
 import mvc.adminAutocar.Model.Ticket;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ListIterator;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TicketsController implements Initializable {
 
@@ -68,7 +77,34 @@ public class TicketsController implements Initializable {
         loadData();
     }
 
+    @FXML
+    public void exporterTickets() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Export Agencies");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
 
+        File outputFile = fileChooser.showSaveDialog(btnExporter.getScene().getWindow());
+        if (outputFile != null) {
+            try {
+                FileWriter fw = new FileWriter(outputFile);
+                BufferedWriter bw = new BufferedWriter(fw);
+                ObservableList<Ticket> list = ticketTable.getItems();
+                ListIterator<Ticket> iter = list.listIterator();
+                while (iter.hasNext()) {
+                    Ticket ticket = iter.next();
+                    bw.write(String.format("%s,%s,%s,%s,%s,%s,%s,%s\n", ticket.getIdTicket(),ticket.getAgence(),ticket.getArrivalDate(),ticket.getDepartureDate(),ticket.getDestination(),ticket.getPrix(),ticket.getPlaceNumber(),ticket.getIsPurchesed()));
+                }
+                bw.close();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setTitle("Succès");
+                alert.setContentText("Les données ont été exportées avec succès!");
+                alert.showAndWait();
+            } catch (IOException ex) {
+                Logger.getLogger(AgencesController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
     @FXML
     void handleAddTickets() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/AddTickets.fxml"));

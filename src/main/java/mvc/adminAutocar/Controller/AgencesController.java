@@ -1,5 +1,8 @@
 package mvc.adminAutocar.Controller;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,6 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
@@ -63,7 +67,34 @@ public class AgencesController implements Initializable {
     AgencyRepository agencyRepository = new AgencyRepository();
     AddAgenceController addAgenceController = new AddAgenceController();
 
+    @FXML
+    void exporterAgennce() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Export Agencies");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
 
+        File outputFile = fileChooser.showSaveDialog(btnExporter.getScene().getWindow());
+        if (outputFile != null) {
+            try {
+                FileWriter fw = new FileWriter(outputFile);
+                BufferedWriter bw = new BufferedWriter(fw);
+                ObservableList<Agency> list = agencyTable.getItems();
+                ListIterator<Agency> iter = list.listIterator();
+                while (iter.hasNext()) {
+                    Agency agency = iter.next();
+                    bw.write(String.format("%s,%s,%s,%s,%s\n", agency.getIdAgency(), agency.getName(), agency.getAddresse(), agency.getTel(), agency.getStatus()));
+                }
+                bw.close();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setTitle("Succès");
+                alert.setContentText("Les données ont été exportées avec succès!");
+                alert.showAndWait();
+            } catch (IOException ex) {
+                Logger.getLogger(AgencesController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
     @FXML
     void handleAddAgency() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/AddAgence.fxml"));
@@ -81,8 +112,6 @@ public class AgencesController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadData();
     }
-
-
 
     // function allows to fetch the data from data base and show it in the table
     private void loadData(){
