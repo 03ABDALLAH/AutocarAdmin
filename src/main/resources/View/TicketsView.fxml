@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.TicketsController">
+<AnchorPane prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.TicketsController">
     <children>
         <Pane id="AgencesView" style="-fx-background-color: #F3F5FA;" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="24.0">
             <children>
@@ -65,7 +65,7 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button id="btnExporter" fx:id="btnExporter" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="130.0" text="Exporter">
+                                <Button id="btnExporter" fx:id="btnExporter" alignment="CENTER" mnemonicParsing="false" onAction="#exporterTickets" prefHeight="34.0" prefWidth="130.0" text="Exporter">
                                     <graphic>
                                         <ImageView fitHeight="24.0" fitWidth="24.0">
                                             <image>

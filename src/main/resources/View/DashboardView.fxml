@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.DashboardController">
+<AnchorPane prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.DashboardController">
    <children>
       <Pane AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
          <children>
@@ -54,11 +58,319 @@
                   </HBox>
                </children>
             </VBox>
-            <ImageView fitHeight="390.0" fitWidth="884.0" layoutX="122.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/Images/under-construction-south-wilford-endowed-church-england-primary-school-1.png" />
-               </image>
-            </ImageView>
+            <HBox layoutY="134.0" prefHeight="143.0" prefWidth="817.0">
+               <children>
+                  <VBox prefHeight="144.0" prefWidth="265.0" style="-fx-background-color: #E1F1FD; -fx-background-radius: 12;">
+                     <children>
+                        <HBox prefHeight="40.0" prefWidth="264.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Guichet  " textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="51.0" prefWidth="264.0">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Actif :" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Segoe UI" size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="7.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <Text fill="#06a520" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" textOrigin="CENTER">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="26.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <ImageView fitHeight="36.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@../assets/Images/icons8-ok-48.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="100.0" top="6.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="51.0" prefWidth="264.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="En panne :" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Segoe UI" size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="7.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <Text fill="#ee1937" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" textOrigin="CENTER">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="26.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <ImageView fitHeight="36.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@../assets/Images/icons8-high-priority-48.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="50.0" top="6.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="144.0" prefWidth="265.0" style="-fx-background-color: #E1F1FD; -fx-background-radius: 12;">
+                     <children>
+                        <HBox prefHeight="40.0" prefWidth="264.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="51.0" prefWidth="264.0">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vendu :" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Segoe UI" size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="7.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <Text fill="#06a520" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" textOrigin="CENTER">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="26.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <ImageView fitHeight="36.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@../assets/Images/icons8-ticket-confirmed-48.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="80.0" top="6.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="51.0" prefWidth="264.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reste :" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Segoe UI" size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="7.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <Text fill="#ee1937" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" textOrigin="CENTER">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="26.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <ImageView fitHeight="36.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@../assets/Images/icons8-delete-ticket-48.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="90.0" top="6.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="144.0" prefWidth="265.0" style="-fx-background-color: #E1F1FD; -fx-background-radius: 12;">
+                     <children>
+                        <HBox prefHeight="40.0" prefWidth="264.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Agence" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="51.0" prefWidth="264.0">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Meilleur :" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Segoe UI" size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="7.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <Text fill="#06a520" strokeType="OUTSIDE" strokeWidth="0.0" text="CTM" textAlignment="CENTER" textOrigin="CENTER">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="22.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <ImageView fitHeight="36.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@../assets/Images/icons8-double-up-48.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="40.0" top="6.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="51.0" prefWidth="264.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pire :" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Segoe UI" size="24.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" top="7.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <Text fill="#ee1937" strokeType="OUTSIDE" strokeWidth="0.0" text="SAAD" textAlignment="CENTER" textOrigin="CENTER">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="22.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="5.0" />
+                                 </HBox.margin>
+                              </Text>
+                              <ImageView fitHeight="36.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@../assets/Images/icons8-double-down-48.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="75.0" top="6.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox layoutY="297.0" prefHeight="276.0" prefWidth="817.0">
+               <children>
+                  <VBox prefHeight="296.0" prefWidth="277.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Statistique :">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sur les Tickets">
+                           <font>
+                              <Font name="Segoe UI Italic" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                        <BarChart>
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </BarChart>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="250.0" prefWidth="265.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sur les Agences">
+                           <font>
+                              <Font name="Segoe UI Italic" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Text>
+                        <PieChart>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </PieChart>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="250.0" prefWidth="265.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sur les Paiements">
+                           <font>
+                              <Font name="Segoe UI Italic" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Text>
+                        <BarChart>
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </BarChart>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
          </children>
       </Pane>
    </children>

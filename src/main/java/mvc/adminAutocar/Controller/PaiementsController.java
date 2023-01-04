@@ -1,5 +1,6 @@
 package mvc.adminAutocar.Controller;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -8,15 +9,24 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
 import javafx.util.Callback;
 import mvc.adminAutocar.Model.Guichet;
 import mvc.adminAutocar.Model.Payment;
 import mvc.adminAutocar.Model.Repositories.GuichetRepository;
 import mvc.adminAutocar.Model.Repositories.PaymentRepository;
+import mvc.adminAutocar.Model.Ticket;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ListIterator;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PaiementsController implements Initializable {
 
@@ -69,6 +79,35 @@ public class PaiementsController implements Initializable {
         paymentTable.setItems(paymentRepository.getPayments());
     }
 
+
+    @FXML
+    public void exporterPaiements() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Export Agencies");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
+
+        File outputFile = fileChooser.showSaveDialog(btnExporter.getScene().getWindow());
+        if (outputFile != null) {
+            try {
+                FileWriter fw = new FileWriter(outputFile);
+                BufferedWriter bw = new BufferedWriter(fw);
+                ObservableList<Payment> list = paymentTable.getItems();
+                ListIterator<Payment> iter = list.listIterator();
+                while (iter.hasNext()) {
+                    Payment payment = iter.next();
+                    bw.write(String.format("%s,%s,%s\n", payment.getIdPaiment(),payment.getPaymentDate()));
+                }
+                bw.close();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setTitle("Succès");
+                alert.setContentText("Les données ont été exportées avec succès!");
+                alert.showAndWait();
+            } catch (IOException ex) {
+                Logger.getLogger(AgencesController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
     // function allows to add two button foreach row in the data table: one for the edit action and the other for delete action
     Callback<TableColumn<Payment, String>, TableCell<Payment, String>> cellFoctory = (TableColumn<Payment, String> param) -> {
         // make cell containing buttons
