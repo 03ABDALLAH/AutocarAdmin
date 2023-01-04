@@ -47,13 +47,13 @@ public class AgencesController implements Initializable {
     private TableColumn<Agency, String> colAction;
 
     @FXML
-    private TableColumn<Agency, String> colAddress;
+   TableColumn<Agency, String> colAddress;
 
     @FXML
-    private TableColumn<Agency, String> colId;
+   TableColumn<Agency, String> colId;
 
     @FXML
-    private TableColumn<Agency, String> colNom;
+   TableColumn<Agency, String> colNom;
 
     @FXML
     private TableColumn<Agency, String> colTel;
@@ -114,7 +114,7 @@ public class AgencesController implements Initializable {
     }
 
     // function allows to fetch the data from data base and show it in the table
-    private void loadData(){
+   void loadData(){
         agencyTable.setItems(agencyRepository.getAgencies());
         colId.setCellValueFactory(new PropertyValueFactory<>("IdAgency"));
         colNom.setCellValueFactory(new PropertyValueFactory<>("Name"));
