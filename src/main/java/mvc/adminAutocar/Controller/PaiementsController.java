@@ -1,5 +1,6 @@
 package mvc.adminAutocar.Controller;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
 import mvc.adminAutocar.Model.Guichet;
@@ -58,20 +60,34 @@ public class PaiementsController implements Initializable {
     @FXML
     private TableView<Payment> paymentTable;
 
-    PaymentRepository paymentRepository = new PaymentRepository();
+    @FXML
+    private TextField searchTextField;
 
+    @FXML
+    private Text RevenuAujourdui;
+
+    @FXML
+    private Text RevenuMois;
+
+    PaymentRepository paymentRepository = new PaymentRepository();
+    ObservableList<Payment> payments;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadData();
+        searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            searchInPaymentTable(newValue);
+        });
     }
 
     // function allows to fetch the data from data base and show it in the table
     private void loadData(){
-        paymentTable.setItems(paymentRepository.getPayments());
+        payments = paymentRepository.getPayments();
+        paymentTable.setItems(payments);
         colId.setCellValueFactory(new PropertyValueFactory<>("IdPaiment"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("PaymentDate"));
-
+        RevenuAujourdui.setText(Double.toString(paymentRepository.getRevenuAujourdui()));
+        RevenuMois.setText(Double.toString(paymentRepository.getRevenuMois()));
 
         // set the two button to these column
         colAction.setCellFactory(cellFoctory);
@@ -133,8 +149,8 @@ public class PaiementsController implements Initializable {
                             "-fx-min-height: 30px; " +
                             "-fx-max-width: 30px; " +
                             "-fx-max-height: 30px;");
-                    Image editIconImg = new Image("C:/Users/hakee/IdeaProjects/AutocarAdmin/src/main/resources/assets/Images/icons8-edit-file-48.png", 25, 25,true , true);
-                    Image deleteIconImg = new Image("C:/Users/hakee/IdeaProjects/AutocarAdmin/src/main/resources/assets/Images/icons8-remove-48.png", 25, 25 ,true , true);
+                    Image editIconImg = new Image("C:\\Users\\Yassine\\eclipse-workspace\\AutocarAdmin\\src\\main\\resources\\assets\\Images\\icons8-edit-file-48.png", 25, 25,true , true);
+                    Image deleteIconImg = new Image("C:\\Users\\Yassine\\eclipse-workspace\\AutocarAdmin\\src\\main\\resources\\assets\\Images\\icons8-remove-48.png", 25, 25 ,true , true);
 
                     ImageView viewEdit = new ImageView(editIconImg);
                     ImageView viewDelete = new ImageView(deleteIconImg);
@@ -170,4 +186,25 @@ public class PaiementsController implements Initializable {
         };
         return cell;
     };
+
+    public void searchInPaymentTable(String searchText) {
+        if(searchText == null || searchText == ""){
+            paymentTable.setItems(payments);
+            return;
+        }
+        ObservableList<Payment> searchResult = FXCollections.observableArrayList();
+        for (Payment payment : payments) {
+            boolean match = false;
+            if (Integer.toString(payment.getIdPaiment()).contains(searchText)) {
+                match = true;
+            }
+            if (payment.getPaymentDate().toString().contains(searchText)) {
+                match = true;
+            }
+            if (match) {
+                searchResult.add(payment);
+            }
+        }
+        paymentTable.setItems(searchResult);
+    }
 }

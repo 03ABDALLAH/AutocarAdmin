@@ -155,8 +155,8 @@ public class GuichetsController implements Initializable {
                             "-fx-min-height: 30px; " +
                             "-fx-max-width: 30px; " +
                             "-fx-max-height: 30px;");
-                    Image editIconImg = new Image("C:/Users/hakee/IdeaProjects/AutocarAdmin/src/main/resources/assets/Images/icons8-edit-file-48.png", 25, 25,true , true);
-                    Image deleteIconImg = new Image("C:/Users/hakee/IdeaProjects/AutocarAdmin/src/main/resources/assets/Images/icons8-remove-48.png", 25, 25 ,true , true);
+                    Image editIconImg = new Image("C:\\Users\\Yassine\\eclipse-workspace\\AutocarAdmin\\src\\main\\resources\\assets\\Images\\icons8-edit-file-48.png", 25, 25,true , true);
+                    Image deleteIconImg = new Image("C:\\Users\\Yassine\\eclipse-workspace\\AutocarAdmin\\src\\main\\resources\\assets\\Images\\icons8-remove-48.png", 25, 25 ,true , true);
 
                     ImageView viewEdit = new ImageView(editIconImg);
                     ImageView viewDelete = new ImageView(deleteIconImg);

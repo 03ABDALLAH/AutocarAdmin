@@ -1,5 +1,6 @@
 package mvc.adminAutocar.Controller;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import mvc.adminAutocar.Model.Guichet;
+import mvc.adminAutocar.Model.Payment;
 import mvc.adminAutocar.Model.Repositories.TicketRepository;
 import mvc.adminAutocar.Model.Ticket;
 
@@ -69,12 +71,19 @@ public class TicketsController implements Initializable {
     @FXML
     private TableView<Ticket> ticketTable;
 
+    @FXML
+    private TextField searchTextField;
+
     TicketRepository ticketRepository = new TicketRepository();
     AddTicketController addTicketController = new AddTicketController();
+    ObservableList<Ticket> tickets;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadData();
+        searchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            searchInTicketTable(newValue);
+        });
     }
 
     @FXML
@@ -121,7 +130,8 @@ public class TicketsController implements Initializable {
 
     // function allows to fetch the data from data base and show it in the table
     private void loadData(){
-        ticketTable.setItems(ticketRepository.getTickets());
+        tickets = ticketRepository.getTickets();
+        ticketTable.setItems(tickets);
         colId.setCellValueFactory(new PropertyValueFactory<>("IdTicket"));
         colDestination.setCellValueFactory(new PropertyValueFactory<>("Destination"));
         colDepar.setCellValueFactory(new PropertyValueFactory<>("Departure"));
@@ -162,8 +172,8 @@ public class TicketsController implements Initializable {
                             "-fx-min-height: 30px; " +
                             "-fx-max-width: 30px; " +
                             "-fx-max-height: 30px;");
-                    Image editIconImg = new Image("C:/Users/hakee/IdeaProjects/AutocarAdmin/src/main/resources/assets/Images/icons8-edit-file-48.png", 25, 25,true , true);
-                    Image deleteIconImg = new Image("C:/Users/hakee/IdeaProjects/AutocarAdmin/src/main/resources/assets/Images/icons8-remove-48.png", 25, 25 ,true , true);
+                    Image editIconImg = new Image("C:\\Users\\Yassine\\eclipse-workspace\\AutocarAdmin\\src\\main\\resources\\assets\\Images\\icons8-edit-file-48.png", 25, 25,true , true);
+                    Image deleteIconImg = new Image("C:\\Users\\Yassine\\eclipse-workspace\\AutocarAdmin\\src\\main\\resources\\assets\\Images\\icons8-remove-48.png", 25, 25 ,true , true);
 
                     ImageView viewEdit = new ImageView(editIconImg);
                     ImageView viewDelete = new ImageView(deleteIconImg);
@@ -211,5 +221,27 @@ public class TicketsController implements Initializable {
         };
         return cell;
     };
-
+    public void searchInTicketTable(String searchText) {
+        if(searchText == null || searchText == ""){
+            ticketTable.setItems(tickets);
+            return;
+        }
+        ObservableList<Ticket> searchResult = FXCollections.observableArrayList();
+        for (Ticket ticket : tickets) {
+            boolean match = false;
+            if (Integer.toString(ticket.getIdTicket()).contains(searchText)) {
+                match = true;
+            }
+            if (ticket.getDestination().contains(searchText)) {
+                match = true;
+            }
+            if (ticket.getDeparture().contains(searchText)) {
+                match = true;
+            }
+            if (match) {
+                searchResult.add(ticket);
+            }
+        }
+        ticketTable.setItems(searchResult);
+    }
 }
