@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class PaymentRepository {
 
@@ -62,5 +63,49 @@ public class PaymentRepository {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    // function allows to get Totale de Revenue d'aujourd'hui
+    public double getRevenuAujourdui() {
+        double total = (double)0;
+        ConnectionClass connectionClass = new ConnectionClass();
+        Connection connection = connectionClass.getConnection();
+        PreparedStatement pst;
+        try {
+            pst = connection.prepareStatement("SELECT SUM(t.Prix) as TotalRevenue " +
+                    "FROM ticket t " +
+                    "INNER JOIN paiment p ON t.IdPaiment = p.IdPaiment " +
+                    "WHERE DATE(p.PaymentDate) = '" + LocalDate.now() + "';");
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next()) {
+                total = resultSet.getDouble("TotalRevenue");
+            }
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return total;
+    }
+
+    // function allows to get Totale de Revenue de ce mois
+    public double getRevenuMois() {
+        double total = (double)0;
+        ConnectionClass connectionClass = new ConnectionClass();
+        Connection connection = connectionClass.getConnection();
+        PreparedStatement pst;
+        try {
+            pst = connection.prepareStatement("SELECT SUM(t.Prix) as TotalRevenue " +
+                    "FROM ticket t " +
+                    "INNER JOIN paiment p ON t.IdPaiment = p.IdPaiment " +
+                    "WHERE MONTH(p.PaymentDate) = '" + LocalDate.now().getMonthValue() + "';");
+            ResultSet resultSet = pst.executeQuery();
+            while (resultSet.next()) {
+                total = resultSet.getDouble("TotalRevenue");
+            }
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return total;
     }
 }

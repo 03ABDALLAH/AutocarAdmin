@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.TicketsController">
+<AnchorPane prefHeight="620.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.adminAutocar.Controller.TicketsController">
     <children>
         <Pane id="AgencesView" style="-fx-background-color: #F3F5FA;" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="24.0">
             <children>
@@ -37,7 +37,7 @@
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="817.0">
                             <children>
-                                <TextField id="searchBar" prefHeight="38.0" prefWidth="300.0" promptText="Search" style="-fx-background-color: white;">
+                                <TextField id="searchBar" fx:id="searchTextField" prefHeight="38.0" prefWidth="300.0" promptText="Search" style="-fx-background-color: white;">
                                     <HBox.margin>
                                         <Insets right="224.0" />
                                     </HBox.margin>
